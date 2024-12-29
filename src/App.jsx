@@ -50,14 +50,16 @@ export default function App() {
   const {theme}= useThemeStore()
   let routes = createBrowserRouter([
     {path:"/auth/" , element:<AuthLayout/> , children:[
-      {path:"register" , element:authUser? <Navigate to="/home"/>:<SignupPage/>},
-      {index:true , element:authUser? <Navigate to="/home"/>:<LoginPage/>}, 
       // {path:"register"  , element:<SignupPage/>}, 
       // {index:true , element:<LoginPage/>}, 
+      {path:"register" , element:authUser? <Navigate to="/home"/>:<SignupPage/>},
+      {index:true , element:authUser? <Navigate to="/home"/>:<LoginPage/>}, 
       
       
     ]},
     {path:"/" , element:<MainLayout/> , children:[      
+      {path:"register" , element:authUser? <Navigate to="/home"/>:<SignupPage/>},
+      {index:true , element:authUser? <Navigate to="/home"/>:<LoginPage/>}, 
       {path:"home" , element:authUser ?<HomePage/> :<LoginPage/>}, 
       {path:"profile" , element: authUser ? <Profile/>: <LoginPage/>}, 
       {path:"settings" , element:<SettingPage/>}, 
